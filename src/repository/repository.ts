@@ -1,4 +1,4 @@
-import { Collection, ObjectId } from "mongodb";
+import { Collection, ObjectId, WithId } from "mongodb";
 import { IRepository } from "../interfaces/interface.repository";
 import Issue from "../database/model.issue";
 
@@ -26,20 +26,20 @@ class RepositoryIssues implements IRepository {
         }
     }
 
-    async getIssueById(id: ObjectId): Promise<Issue | undefined> {
+    async getIssueById(id: ObjectId): Promise<WithId<Issue> | null | undefined> {
         try {
-            const issues = await this.getAllIssues();
-            return issues?.find(issue => issue._id = id);
+            
+            return this.collection?.findOne({ _id: id });
         } catch (error: any) {
             console.log("Failed to get issue register by id.");
             return;
         }
     }
     
-    async updateIssueById(issue: Issue): Promise<void> {
+    async updateIssueById(id: ObjectId, issue: Issue): Promise<void> {
         try {
             await this.collection?.findOneAndUpdate(
-                { _id: issue._id }, 
+                { _id: id }, 
                 { $set: { name: issue.name, details: issue.details } });
         } catch (error: any) {
             console.log("Failed to update issue register.");
