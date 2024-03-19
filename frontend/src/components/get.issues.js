@@ -23,7 +23,7 @@ export function IssueList() {
           <p>{issue.name}</p>
           <p>{issue.details}</p>
           <li key={issue._id}>
-            <Link to={`/update/${issue._id}`}>{issue.title}</Link> | <Link to={`/delete/${issue._id}`}>Delete</Link>
+            <Link to={`/update/${issue._id}`}>{issue.title}Update</Link> | <Link to={`/delete/${issue._id}`}>Delete</Link>
           </li>
         </div>
         ))}
