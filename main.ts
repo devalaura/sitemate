@@ -1,4 +1,5 @@
 import express, { Request, Response } from 'express';
+import cors from 'cors';
 require('dotenv').config();
 
 import ServiceIssues from './src/service/service';
@@ -8,6 +9,8 @@ import MongoDBConnection from './src/database/connection';
 async function App(): Promise<void> {
     const app = express();
     app.use(express.json());
+
+    app.use(cors());
     
     const MONGO_URI = "mongodb+srv://public:sitemate-2024@issues-challenge.afrpwdo.mongodb.net/?retryWrites=true&w=majority&appName=issues-challenge";
     const MONGO_DB_NAME = "sitemate";
