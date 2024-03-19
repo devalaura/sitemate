@@ -4,8 +4,7 @@
   "description": "",
   "main": "main.ts",
   "scripts": {
-    "postinstall": "npm install",
-    "start": "nodemon main",
+    "start": "npm install && nodemon main",
     "test": "jest"
   },
   "keywords": [],
