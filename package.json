@@ -4,6 +4,7 @@
   "description": "",
   "main": "main.ts",
   "scripts": {
+    "postinstall": "npm install",
     "start": "nodemon main",
     "test": "jest"
   },
